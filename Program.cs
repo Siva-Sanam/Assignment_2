@@ -1,5 +1,5 @@
 ﻿/* 
- 
+
 YOU ARE NOT ALLOWED TO MODIFY ANY FUNCTION DEFINIDTION's PROVIDED.
 WRITE YOUR CODE IN THE RESPECTIVE QUESTION FUNCTION BLOCK
 
@@ -526,6 +526,14 @@ namespace ISM6225_Spring_2024_Assignment_2
                 if (nums == null || nums.Length < 3)
                 {
                     return 0; // Return 0 if array length is less than 3
+                }
+
+                foreach (int num in nums)
+                {
+                    if (num <= 0)
+                    {
+                        throw new ArgumentException("Array should only contain positive numbers.");
+                    }
                 }
 
                 // Sort the array in descending order
