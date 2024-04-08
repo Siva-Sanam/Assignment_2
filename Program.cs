@@ -319,6 +319,15 @@ namespace ISM6225_Spring_2024_Assignment_2
                 {
                     return 0; // Return 0 for empty array
                 }
+                // Validate input array to ensure it contains only 0s and 1s
+
+                foreach (int num in nums)
+                {
+                    if (num != 0 && num != 1)
+                    {
+                        throw new ArgumentException("Input array should contain only 0s and 1s.");
+                    }
+                }
 
                 int a = 0; //initializing the variable for maximum number of consecutive binary values in the input
                 int b = 0; //initializing the variable for current number of consecutive binary values in the input
@@ -454,6 +463,11 @@ namespace ISM6225_Spring_2024_Assignment_2
                     b = Math.Max(b, num);
                 }
 
+                // Handle case where all elements are the same
+                if (a == b)
+                {
+                    return 0;
+                }
                 // Calculate the bucket size and number of buckets
                 int bucketSize = Math.Max(1, (b - a) / (nums.Length - 1));
                 int numBuckets = (b - a) / bucketSize + 1;
@@ -604,6 +618,11 @@ namespace ISM6225_Spring_2024_Assignment_2
                 if (string.IsNullOrEmpty(s) || string.IsNullOrEmpty(part))
                 {
                     return s; // Return original string if either s or part is empty
+                }
+                // Check if part is longer than the input string
+                if (part.Length > s.Length)
+                {
+                    throw new ArgumentException("The part string is longer than the input string.Please enter valid input values");
                 }
 
                 StringBuilder sb = new StringBuilder(s);
